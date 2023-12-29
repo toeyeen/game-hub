@@ -3,3 +3,27 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+
+.grid-container {
+  display: grid;
+  grid-template-areas: "navbar navbar navbar" "sidebar main main";
+}
+
+.navbar {
+  grid-area: navbar;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: #4CAF50;
+  padding: 10px;
+}
+
+.main {
+  grid-area: main;
+  background-color: #fcb331;
+  padding: 10px;
+}
