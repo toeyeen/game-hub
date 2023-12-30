@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 import apiclient, { FetchError } from "../../services/api-service";
 
-interface Games {
+export interface Game {
   id: string,
   name: string,
+  background_image: string,
 }
 
 interface FetchGamesResponse {
   count: number,
-  results: Games[]
+  results: Game[]
 }
 
 const useGames = () => {
 
-  const [games, setGames] = useState<Games[]>([])
+  const [games, setGames] = useState<Game[]>([])
   const [error, setError] = useState('')
 
   const controller = new AbortController()
