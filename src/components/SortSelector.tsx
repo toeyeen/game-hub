@@ -1,21 +1,32 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
-import React from 'react'
 import { BsChevronDown } from 'react-icons/bs'
 
-function SortSelector() {
-  // const { data: platforms, error } = usePlatforms()
+export interface SortSelectorProps {
+  onSelectSortOrder: (sortOrder: SortFilter) => void
+  selectedSortOrder: string
+}
 
-  // if (error) return null
 
-  const filters = [{ id: 1, name: 'Relevance' }, { id: 2, name: 'Popularity' }, { id: 3, name: 'Release Date' }, { id: 4, name: 'Average Rating' }, { id: 5, name: 'Name' }, { id: 6, name: 'Date Added' }]
+export interface SortFilter {
+  id: number
+  name: string
+  value: string
+}
+
+const filters = [{ id: 1, name: 'Relevance', value: '' }, { id: 2, name: 'Popularity', value: '-metacritic' }, { id: 3, name: 'Release Date', value: '-released' }, { id: 4, name: 'Average Rating', value: '-rating' }, { id: 5, name: 'Name', value: 'name' }, { id: 6, name: 'Date Added', value: '-added' }]
+
+function SortSelector({ onSelectSortOrder, selectedSortOrder }: SortSelectorProps) {
+
+  const filterMethod = filters.find(item => item.value === selectedSortOrder)
+
+
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        Order By Relevance
+        Order By: {filterMethod?.name || 'Relevance'}
       </MenuButton>
       <MenuList>
-
-        {filters.map((item, index) => <MenuItem key={index}> {item.name}  </MenuItem>)}
+        {filters.map((item, index) => <MenuItem onClick={() => onSelectSortOrder(item)} key={index}> {item.name}  </MenuItem>)}
       </MenuList>
     </Menu>
   )

@@ -15,6 +15,10 @@ export interface Game {
   metacritic: number,
 }
 
+export interface Order {
+
+}
+
 export interface UseGamesProps {
   gameQuery: GameQuery
 }
@@ -24,7 +28,7 @@ export interface UseGamesProps {
 const useGames = (options: UseGamesProps) => useData<Game>('/games', {
   genres: options.gameQuery.genre?.id,
   platforms: options.gameQuery.platform?.id,
-
+  ordering: options.gameQuery.ordering,
 }, [options.gameQuery])
 
 export default useGames;
