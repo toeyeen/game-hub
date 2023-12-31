@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+form {
+  width: 100%;
+}
+
 
 .grid-container {
   display: grid;

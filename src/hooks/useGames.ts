@@ -29,6 +29,7 @@ const useGames = (options: UseGamesProps) => useData<Game>('/games', {
   genres: options.gameQuery.genre?.id,
   platforms: options.gameQuery.platform?.id,
   ordering: options.gameQuery.ordering,
+  search: options.gameQuery.searchText,
 }, [options.gameQuery])
 
 export default useGames;
