@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react";
 import apiclient, { FetchError } from "../../services/api-service";
 
+
+export interface Platform {
+  id: number,
+  name: string,
+  slug: string,
+}
 export interface Game {
   id: string,
   name: string,
   background_image: string,
+  parent_platforms: { platform: Platform }[]
 }
 
 interface FetchGamesResponse {
@@ -31,7 +38,7 @@ const useGames = () => {
         setError(err.message);
       })
 
-    return () => controller.abort('Cancelled')
+    // return () => controller.abort('Cancelled')
   }, [])
 
 
