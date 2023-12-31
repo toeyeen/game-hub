@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import apiclient, { FetchError } from "../services/api-service";
+import { SearchParameters } from "ofetch";
 
 // interface Genre {
 //   id: number,
@@ -13,7 +14,7 @@ interface FetchResponse<T> {
 }
 
 
-const useData = <T>(endpoint: string) => {
+const useData = <T>(endpoint: string, optionsParams?: SearchParameters, deps?: number[]) => {
   const [data, setData] = useState<T[]>([])
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -25,6 +26,9 @@ const useData = <T>(endpoint: string) => {
     setIsLoading(true)
     apiclient<FetchResponse<T>>(endpoint, {
       signal: controller.signal,
+      params: {
+        ...optionsParams
+      },
     })
       .then(res => {
         setData(res.results)
@@ -38,7 +42,7 @@ const useData = <T>(endpoint: string) => {
       })
 
     // return () => controller.abort('Cancelled')
-  }, [])
+  }, deps ? [...deps] : [])
 
 
   return { data, error, isLoading }
