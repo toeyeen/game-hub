@@ -9,9 +9,6 @@ interface GenreListProps {
 
 function GenreList({ onSelectGenre, selectedGenre }: GenreListProps) {
 
-
-
-
   const { data: genre, isLoading, error } = useGenre()
   return (
     <>
