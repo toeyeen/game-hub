@@ -18,7 +18,7 @@ function GameGrid() {
         base: 1,
         sm: 2,
         md: 3,
-      }} padding='10px' spacing={10}>
+      }} padding={3} spacing={10}>
         {isLoading && Array(9).fill(0).map((_, index) => <GameCardSkeleton key={index} />)}
         {games.map(game => <GameCard key={game.id} game={game} />)}
       </SimpleGrid>

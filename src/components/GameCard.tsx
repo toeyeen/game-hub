@@ -3,6 +3,7 @@ import { Game } from '../hooks/useGames'
 import { Card, CardBody, HStack, Heading, Image } from '@chakra-ui/react'
 import CriticScore from './CriticScore'
 import GameCardContainter from './GameCardContainter'
+import { getCroppedImageUrl } from '../utils'
 interface GameCardProps {
   game: Game
 }
@@ -11,7 +12,7 @@ function GameCard({ game }: GameCardProps) {
   return (
     <GameCardContainter>
       <Card>
-        <Image src={game.background_image} />
+        <Image src={getCroppedImageUrl(game.background_image)} />
         <CardBody>
           <Heading fontSize='2xl'>
             {game.name}
