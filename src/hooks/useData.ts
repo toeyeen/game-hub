@@ -36,7 +36,6 @@ const useData = <T>(endpoint: string, optionsParams?: SearchParameters, deps?: G
         setIsLoading(false)
       })
       .catch((err: FetchError) => {
-        console.log(err.status);
         if (err.status === undefined) return;
         setError(err.message);
         setIsLoading(false)
