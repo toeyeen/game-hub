@@ -1,4 +1,4 @@
-import { HStack, Image } from '@chakra-ui/react'
+import { Box, HStack, Image } from '@chakra-ui/react'
 import gamifyLogo from '../assets/gamify.svg'
 import ColorModeSwitch from './ColorModeSwitch'
 import SearchInput from './SearchInput'
@@ -10,9 +10,11 @@ interface NavbarProps {
 function Navbar({ onSearch }: NavbarProps) {
   return (
     <HStack padding={'10px'} >
-      <Image src={gamifyLogo} alt='logo' boxSize='60px' />
+      <Image src={gamifyLogo} alt='logo' boxSize='80px' />
       <SearchInput onSearch={onSearch} />
-      <ColorModeSwitch />
+      <Box w={'180px'}>
+        <ColorModeSwitch />
+      </Box>
     </HStack>
   )
 }
