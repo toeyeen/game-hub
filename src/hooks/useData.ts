@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import apiclient, { FetchError } from "../services/api-service";
 import { SearchParameters } from "ofetch";
+import { GameQuery } from "../App";
 
 // interface Genre {
 //   id: number,
@@ -14,7 +15,7 @@ interface FetchResponse<T> {
 }
 
 
-const useData = <T>(endpoint: string, optionsParams?: SearchParameters, deps?: number[]) => {
+const useData = <T>(endpoint: string, optionsParams?: SearchParameters, deps?: GameQuery[]) => {
   const [data, setData] = useState<T[]>([])
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)

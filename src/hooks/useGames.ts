@@ -1,5 +1,5 @@
+import { GameQuery } from "../App";
 import useData from "./useData";
-import { Genre } from "./useGenre";
 
 
 export interface Platform {
@@ -16,16 +16,15 @@ export interface Game {
 }
 
 export interface UseGamesProps {
-  selectedGenre: Genre | null,
-  selectedPlatform: Platform | null,
+  gameQuery: GameQuery
 }
 
 
 
 const useGames = (options: UseGamesProps) => useData<Game>('/games', {
-  genres: options.selectedGenre?.id,
-  platforms: options.selectedPlatform?.id,
+  genres: options.gameQuery.genre?.id,
+  platforms: options.gameQuery.platform?.id,
 
-}, [options.selectedGenre?.id, options.selectedPlatform?.id] as number[])
+}, [options.gameQuery])
 
 export default useGames;
