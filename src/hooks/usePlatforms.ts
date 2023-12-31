@@ -1,6 +1,6 @@
 import { platforms } from "../data"
 
-interface Platform {
+export interface Platform {
   id: number,
   name: string,
   slug: string,
